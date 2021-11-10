@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Webview UI Toolkit: All Components</title>
+        <script type="module" src="{context}/js/toolkit.min.js"></script>
+    </head>
+
+    <body>
+        <script type="application/javascript">
+
+            window.addEventListener("message", (event) => {
+                const message = event.data;
+                    // {
+                    //    type,
+                    //    subType,
+                    //    value,
+                    //    subValue
+                    // }
+                    switch (message.type) {
+                        case "stdout":
+                            const stdout = document.getElementById("stdout");
+                            stdout.value += message.value;
+                            break;
+                        default:
+                            throw "Message subType=" + message.subType + " unknown";
+                    }
+            });
+            
+            function cleanStdout(){
+                const stdout = document.getElementById("stdout");
+                stdout.value = "Waiting for stdout...";
+            }
+        </script>
+
+        <vscode-text-area id="stdout" cols="50" rows="30" value="Waiting for stdout...">Stdout</vscode-text-area> <br>
+        <vscode-button onclick="window.api.postMessage({type:'run_command'})">Run command</vscode-button>
+        <vscode-button onclick="cleanStdout()">Clean</vscode-button>
+    </body>
+
+</html>

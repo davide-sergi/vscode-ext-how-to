@@ -10,16 +10,69 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:shell-example.helloWorld"
+		"*"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "shell-example.helloWorld",
-				"title": "Hello World"
+				"command": "shell-example.runCommand",
+				"title": "Shell example: Run shell command"
+			},
+			{
+				"command": "shell-example.configureContext",
+				"title": "Shell example: Configure execution context",
+				"icon": "./node_modules/@vscode/codicons/src/icons/edit.svg"
+			},
+			{
+				"command": "shell-example.openWebview",
+				"title": "Shell example: Open webapp view"
 			}
-		]
+		],
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "shell-example-view",
+					"title": "Shell example",
+					"icon": "./node_modules/@vscode/codicons/src/icons/dashboard.svg"
+				}
+			]
+		},
+		"viewsWelcome": [
+			{
+				"view": "shell-example-sub-view",
+				"contents": "Shell command activity bar is empty.\n[Configure context](command:shell-example.configureContext)"
+			}
+		],
+		"views": {
+			"shell-example-view": [
+				{
+					"id": "shell-example-sub-view",
+					"name": "Shell example",
+					"contextualTitle": "Shell example"
+				}
+			]
+		},
+		"menus": {
+			"view/title": [
+				{
+					"command": "shell-example.openWebview",
+					"when": "view == shell-example-sub-view"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "shell-example.configureContext",
+					"when": "view == shell-example-sub-view && viewItem == folder",
+					"group": "inline"
+				},
+				{
+					"command": "shell-example.configureContext",
+					"when": "view == shell-example-sub-view && viewItem == cmd",
+					"group": "inline"
+				}
+			]
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
@@ -41,5 +94,9 @@
 		"mocha": "^8.4.0",
 		"typescript": "^4.3.2",
 		"vscode-test": "^1.5.2"
+	},
+	"dependencies": {
+		"@vscode/codicons": "0.0.26",
+		"cube-atp-sdk": "file:cube-atp-sdk-1.0.0.tgz"
 	}
 }

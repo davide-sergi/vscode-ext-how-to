@@ -1,0 +1,49 @@
+ .component-row {
+    display: grid;
+    grid-template-columns: 1fr;
+
+  }
+  
+  .component-2-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+  }
+
+  #data-grid-row,
+  #panels-row {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  
+  .component-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    /* border: 2px dashed #7b61ff;
+    border-radius: 5px; */
+  }
+  
+  .component-container > * {
+    margin: 0.25rem 0;
+  }
+  
+  .component-example > p {
+    margin-bottom: 0.5rem;
+  }
+  
+  /* vscode-data-grid,
+  vscode-panels {
+    border: 2px dashed #7b61ff;
+    border-radius: 5px;
+  } */
+
+  form {
+    padding: 1em;
+    margin:1em;
+    border: 1px dashed ;
+    border-radius: 5px;
+  }
