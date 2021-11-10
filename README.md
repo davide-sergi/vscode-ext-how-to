@@ -1,6 +1,20 @@
-# shell-example README
+# VSCode extension how-to
 
 Example vscode extension which let executing of shell commands from UI and monitoring of related standard output.
+
+Main concepts:
+- Debug extension
+- Test suite
+- TP SDK
+- vscode-webview-toolkit
+- Packaging and installation
+- VSCode components
+  - Tree-view panel
+  - Terminal
+  - Webview
+  - Commands
+
+![pic](pic.png)
 
 ## Procedure
 
