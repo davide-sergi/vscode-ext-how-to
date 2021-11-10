@@ -46,7 +46,7 @@ In order to scaffold an empty project, follow below steps:
 Steps:
 - Install dependencies:
   - TP SDK : `npm install ./cube-atp-sdk-1.0.0.tgz`
-  - Codicons icons : `npm install @vscode/codicons`
+  - Codicons icons : `npm install` and  `npm install @vscode/codicons`
 - `Package.json` - add following sections:
     - `activationEvents` equal to `*`
     - `contributes.commands`
