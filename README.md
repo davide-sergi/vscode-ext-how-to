@@ -226,8 +226,13 @@ Steps:
 
 - Code to populate panel with: folder, command and log files information
     ```js
-        // panel.ts
+        // commands.ts
+        export async function configureContext(){
+            // ...
+            updatePanel(Context.folder, Context.cmd);
+        }
 
+        // panel.ts
         export function updatePanel(folder: vscode.Uri | undefined = undefined, cmd: string | undefined = undefined, logs: string[] | undefined = undefined){
             
             // if(!PanelInstance.panel){
@@ -235,12 +240,15 @@ Steps:
             // }
 
             let nodes : atp.ui.panel.Node[] = [];
+            let configChildren = [];
             if(folder){
-                nodes.push(new Node(folder.fsPath, undefined, undefined, undefined, "folder", undefined));
+                configChildren.push(new Node(folder.fsPath, undefined, undefined, undefined, "folder", undefined));
             }
             if(cmd){
-                nodes.push(new Node(cmd, undefined, undefined, undefined, "cmd", undefined));
+                configChildren.push(new Node(cmd, undefined, undefined, undefined, "cmd", undefined));
             }
+            nodes.push(new Node("Configuration", undefined, undefined, configChildren, "logs", undefined));
+
 
             if(logs){
                 let logNodes = logs.map( l => new Node(l, undefined, undefined, undefined, "log", l))
@@ -354,3 +362,8 @@ To run test, select `Extensions test` environment from debug panel.
         }).timeout(10000);   
     })
 ```
+
+## Publish/Package extension
+In order to package and/or publish a vscode extension it is need an additional tool: `vsce`
+- Install it with NPM: `npm install -g vsce`
+- For packaging, run inside vscode extension project folder: `vsce package`
