@@ -22,6 +22,7 @@ Main concepts:
 Microsoft VSCode documentation explain very well how develop a first vscode extension, link [here](https://code.visualstudio.com/api/get-started/your-first-extension)
 
 In order to scaffold an empty project, follow below steps:
+
 0. *Pre-requisites*: Git, Node.js
 1. Install yeaoman CLI and related VSCode plugin
     - Execute: `npm install -g yo generator-code`
